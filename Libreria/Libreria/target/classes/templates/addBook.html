@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 50px;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        span {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+<form action="#" th:action="@{/addBookAction}" th:object="${book}" method="post">
+    <p>Author</p>
+    <input type="text" th:field="*{author}"/>
+    <p th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Must be between 3 and 10 characters</p>
+
+    <p>Title</p>
+    <input type="text" th:field="*{title}"/>
+    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Must be between 3 and 10 characters</p>
+
+    <p>Publication Year (dd/mm/yyyy)</p>
+    <input type="text" th:field="*{pubblicationYear}"/>
+    <p th:if="${#fields.hasErrors('pubblicationYear')}" th:errors="*{pubblicationYear}">Must be between 3 and 10 characters</p>
+
+    <p>Price</p>
+    <input type="number" th:field="*{price}"/>
+    <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Must be between 3 and 10 characters</p>
+
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
